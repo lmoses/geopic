@@ -37,6 +37,8 @@
 		A671B96A165036310097D49D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A671B969165036310097D49D /* AppDelegate.m */; };
 		A671B96D165036310097D49D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A671B96C165036310097D49D /* MainViewController.m */; };
 		A671B96F165036310097D49D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A671B96E165036310097D49D /* MainViewController.xib */; };
+		A671B979165036D10097D49D /* www in Resources */ = {isa = PBXBuildFile; fileRef = A671B978165036D10097D49D /* www */; };
+		A671B98316515C170097D49D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A671B98216515C170097D49D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		A671B96E165036310097D49D /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
 		A671B971165036310097D49D /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		A671B972165036310097D49D /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
+		A671B978165036D10097D49D /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		A671B98216515C170097D49D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 		A671B90F165036310097D49D = {
 			isa = PBXGroup;
 			children = (
+				A671B98216515C170097D49D /* Default-568h@2x.png */,
+				A671B978165036D10097D49D /* www */,
 				A671B93B165036310097D49D /* geopic */,
 				A671B920165036310097D49D /* Frameworks */,
 				A671B91E165036310097D49D /* Products */,
@@ -328,6 +334,8 @@
 				A671B964165036310097D49D /* Capture.bundle in Resources */,
 				A671B966165036310097D49D /* Cordova.plist in Resources */,
 				A671B96F165036310097D49D /* MainViewController.xib in Resources */,
+				A671B979165036D10097D49D /* www in Resources */,
+				A671B98316515C170097D49D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +556,7 @@
 				A671B977165036310097D49D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

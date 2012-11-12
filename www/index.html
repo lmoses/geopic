@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CacheDemPics</title>
+    <link rel="stylesheet" href="style/moca.css">
+    <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+      <meta charset="utf-8">
+        
+        <!-- iPad/iPhone specific css below, add after your main css >
+         <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+         <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
+         -->
+        <!--
+         If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here
+         -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>
+        
+        <link rel="stylesheet" href="js/jquery.mobile.structure-1.2.0.min.css" />
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+        
+        <script src="js/camera.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+          
+                    
+          
+          function onBodyLoad()
+          {
+            document.addEventListener("deviceready", onDeviceReady, false);
+          }
+          
+          /* When this function is called, Cordova has been initialized and is ready to roll */
+          /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+           see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+           for more details -jm */
+          
+          function onDeviceReady()
+          {
+            // do your thing!
+            //		navigator.notification.alert("Cordova is working")
+            //console.log("pre camera");
+            //touchme();
+            cameraReady();
+            initparse();
+          }
+          
+          
+          </script>
+        </head>
+  <body onload="onBodyLoad()">
+<!--page template
+ 
+ <div data-role="page" id="YOURID" data-theme="a">
+    <div data-role="header">
+ 
+    </div>
+
+    
+    <div data-role="content">
+ 
+    </div>
+    
+
+     <div data-role="footer">
+     
+     </div>
+    
+    </div>
+ 
+ 
+ -->
+    
+    
+    <!-- page-->
+    <div data-role="page" id="home" data-theme="a">
+      <div data-role="header">
+        <h1>CacheDemPics</h1>
+      </div><!-- /header -->
+      
+      <div data-role="content">
+        <a href="#camera" data-theme="a" data-role="button" > New Game</a>
+        <a href="#continuegame" data-role="button">Continue Game</a>
+      </div><!-- /content -->
+      
+      <!--footer
+       <div data-role="footer">
+       <h4>Page Footer</h4>
+       </div> /footer -->
+      
+    </div>
+    <!--/page-->
+    <!--page-->
+    
+    <div data-role="page" data-theme="a" id="camera">
+      
+      <div data-role="header">
+        <h1>Camera</h1>
+      </div><!-- /header -->
+      
+      <div data-role="content">
+        
+        <button onclick="capturePhoto();">Capture Photo</button>
+        <!--
+         <button onclick="capturePhotoEdit();">Capture Editable Photo</button>
+         <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button>
+         <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button>
+         -->
+        <img style="display:none;width:60px;height:60px;" id="smallImage" alt="image" src="default.png" />
+        <img style="display:none;" id="largeImage" alt="image" src="default.png" />
+        <p>Camera Page content goes here.</p>
+      </div><!-- /content -->
+      
+      <div data-role="footer">
+        <div data-role="navbar" class="ui-navbar" role="navigation">
+          <ul class="ui-grid-a">
+            <li class="ui-block-a">
+              <a href="#home" data-role="button" data-theme="a"><span class="ui-btn-text">Home</span></a>
+            </li>
+            <li class="ui-block-b">
+              <a href="#camera" data-role="button" data-theme="a"><span class="ui-btn-text">Camera</span></a>
+            </li>
+          </ul>
+        </div>
+      </div> <!-- /footer -->
+    </div>
+    <!--/page-->
+    <!-- page continue game-->
+    <div data-role="page" id="continuegame" data-theme="a">
+      <div data-role="header">
+        <h1>Friends</h1>
+      </div>
+      <div data-role="content">
+          <div data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+            <a data-role="button" onclick="createGeoSpot();">Create and store blank object on parse</a>
+            <a data-role="button" onclick="getpos();">get position</a>
+            <a data-role="button" onclick="storegeopoint();">geopoint</a>
+            <a data-role="button" onclick="wheresfriend('Tom');">Tom</a>
+          </div>
+          <div id="result"></div>
+      </div>
+      <div data-role="footer">
+        <div data-role="navbar" class="ui-navbar" role="navigation">
+          <ul class="ui-grid-a">
+            <li class="ui-block-a">
+              <a href="#home" data-role="button" data-theme="a"><span class="ui-btn-text">Home</span></a>
+            </li>
+            <li class="ui-block-b">
+              <a href="#camera" data-role="button" data-theme="a"><span class="ui-btn-text">Camera</span></a>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!--/page continue game-->
+  </body>
+</html>
