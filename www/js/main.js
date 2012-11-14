@@ -71,12 +71,15 @@ function wheresfriend()
              success: function(objects) {
              
              //console.log("here "+objects.get("user"));
-             newstring+="<ul data-role='listview'>"
+             newstring+="<ul data-role='listview' class='ui-listview'>";
+             var li = "<li data-corners='false' data-shadow='false' data-iconshadow='true' data-wrapperels='div' data-icon='arrow-r' data-iconpos='right' data-theme='c' class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c'><div class='ui-btn-inner ui-li'><div class='ui-btn-text'>";
+             var li2 = "</div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'>&nbsp;</span></div></li>";
+             
              for (var i = 0; i < objects.length; i++)
              {
              //console.log("<li> " + objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude);
              
-             newstring+= "<li> "+objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude+"</li>";
+             newstring+= li+objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude+li2;
              }
              newstring+="</ul>";
              //                            console.log(name + "'s ID is:"+object.id)
