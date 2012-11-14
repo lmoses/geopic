@@ -10,7 +10,7 @@ function initparse()
 }
 
 function createGeoSpot(){
-
+  
   geopic.save({
               user: "Default",
               location: point
@@ -28,35 +28,61 @@ function createGeoSpot(){
 }
 
 var logpoint = function(position) {
-   var lat= position.coords.latitude +20;
-   var long = position.coords.longitude +20;
+  var lat= position.coords.latitude;
+  var long = position.coords.longitude;
   console.log("latitude is "+ lat);
   console.log("longitude is "+long);
-
- 
+  var retVal = prompt("Enter your name : ");
+  //alert("You have entered : " +  retVal );
+  
   var newpoint = new Parse.GeoPoint(lat,long);
   console.log(newpoint.latitude);
-  geopic.set("user","billy");
-  
-  geopic.save()
+  geopic.save({
+              user: retVal,
+              location: newpoint
+              }, {
+              success: function(geopic) {
+              console.log("Saved");
+              // The object was saved successfully.
+              },
+              error: function(geopic, error) {
+              console.log("not saving");
+              // The save failed.
+              // error is a Parse.Error with an error code and description.
+              }
+              });
 }
 function storegeopoint()
 {
   navigator.geolocation.getCurrentPosition(logpoint,onError);
 }
-function wheresfriend(name)
+function wheresfriend()
 {
- 
+  
+  var newstring="";
   var query = new Parse.Query(GeoPic);
-  query.equalTo("user", name);
-  query.first({
-             success: function(object) {
-              console.log(name + "'s ID is:"+object.id)
-              console.log(object.get("location").latitude+","+object.get("location").longitude);
-
-              
-              $("#result").text(name + "'s ID is:"+object.id +". The last known location was:"+object.get("location").latitude+","+object.get("location").longitude);
-//             alert("Successfully retrieved " + object.id);
+  //  query.equalTo("user", name);
+  query.exists("user");
+  
+  //  query.ascending("name");
+  query.find({
+             success: function(objects) {
+             
+             //console.log("here "+objects.get("user"));
+             newstring+="<ul>"
+             for (var i = 0; i < objects.length; i++)
+             {
+             //console.log("<li> " + objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude);
+             
+             newstring+= "<li> "+objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude+"</li>";
+             }
+             newstring+="</ul>";
+             //                            console.log(name + "'s ID is:"+object.id)
+             //                            console.log(object.get("location").latitude+","+object.get("location").longitude);
+             //console.log(newstring);
+             
+             $("#result").html(newstring);
+             //                           alert("Successfully retrieved " + object.id);
              },
              error: function(error) {
              alert("Error: " + error.code + " " + error.message);
