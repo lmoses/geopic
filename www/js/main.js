@@ -1,6 +1,5 @@
 var GeoPic = Parse.Object.extend("GeoPic");
-var geopic = new GeoPic();
-var point = new Parse.GeoPoint();
+
 
 
 function initparse()
@@ -10,7 +9,8 @@ function initparse()
 }
 
 function createGeoSpot(){
-  
+  var geopic = new GeoPic();
+  var point = new Parse.GeoPoint();
   geopic.save({
               user: "Default",
               location: point
@@ -28,6 +28,8 @@ function createGeoSpot(){
 }
 
 var logpoint = function(position) {
+  var geopic = new GeoPic();
+  var point = new Parse.GeoPoint();
   var lat= position.coords.latitude;
   var long = position.coords.longitude;
   console.log("latitude is "+ lat);
@@ -69,7 +71,7 @@ function wheresfriend()
              success: function(objects) {
              
              //console.log("here "+objects.get("user"));
-             newstring+="<ul>"
+             newstring+="<ul data-role='listview'>"
              for (var i = 0; i < objects.length; i++)
              {
              //console.log("<li> " + objects[i].get("user") + "'s last known location was:"+objects[i].get("location").latitude+","+objects[i].get("location").longitude);
